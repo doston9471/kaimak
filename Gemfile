@@ -26,10 +26,10 @@ group :development do
   gem 'sqlite3'
   gem 'pry'
 end
-# group :production do
-#   gem 'pg'
-#   gem 'rails_12factor'
-# end
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # gem 'whenever', require: false
