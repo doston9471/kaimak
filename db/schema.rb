@@ -13,18 +13,20 @@
 ActiveRecord::Schema.define(version: 20161210085008) do
 
   create_table "foods", force: :cascade do |t|
-    t.string "date"
-    t.string "firstCourse"
-    t.string "secondCourse"
-    t.string "sideDish"
-    t.string "dessert"
-    t.string "bread"
-    t.string "firstCourseCalorie"
-    t.string "secondCourseCalorie"
-    t.string "sideDishCalorie"
-    t.string "dessertCalorie"
-    t.string "breadCalorie"
-    t.string "total"
+    t.string   "date"
+    t.string   "firstCourse"
+    t.string   "secondCourse"
+    t.string   "sideDish"
+    t.string   "dessert"
+    t.string   "bread"
+    t.string   "firstCourseCalorie"
+    t.string   "secondCourseCalorie"
+    t.string   "sideDishCalorie"
+    t.string   "dessertCalorie"
+    t.string   "breadCalorie"
+    t.string   "total"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
 end
