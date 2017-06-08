@@ -1,8 +1,8 @@
-require "rubygems"
-require "nokogiri"
-require "open-uri"
-require "json"
-require "date"
+# require "rubygems"
+# require "nokogiri"
+# require "open-uri"
+# require "json"
+#require "date"
 class FoodsController < ApplicationController
   def index
 
@@ -10,7 +10,7 @@ class FoodsController < ApplicationController
 
     month = Time.now.strftime("%m").to_i
    
-    if @foods.empty? || month!=Food.first.created_at.strftime("%m").to_i
+    if @foods.empty? || month!=Food.last.created_at.strftime("%m").to_i
 
       page = open("http://ihale.manas.edu.kg/kki.php/")
       doc = Nokogiri::HTML(page)
@@ -43,16 +43,19 @@ class FoodsController < ApplicationController
           :total => f[11])
       end
     end
+    
+    @foo = Food.where(created_at: Time.now.beginning_of_month..Time.now.end_of_month)
+    
 
-    def days_of_month(month, year)
-      Date.new(year, month, -1).day
-    end
+    # def days_of_month(month, year)
+    #   Date.new(year, month, -1).day
+    # end
 
-    n = days_of_month(Time.now.month, Time.now.year)
-    @qwer = Food.order('created_at DESC').limit(n).reverse
+    # n = days_of_month(Time.now.month, Time.now.year)
+    # @qwer = Food.order('created_at DESC').limit(n).reverse
     respond_to do |format|
       format.html
-      format.json { render json: @qwer }
+      format.json { render json: @foo }
     end
   end
 
