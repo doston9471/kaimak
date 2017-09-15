@@ -12,7 +12,7 @@ class FoodsController < ApplicationController
    
     if @foods.empty? || month!=Food.last.created_at.strftime("%m").to_i
 
-      page = open("http://ihale.manas.edu.kg/kki.php/")
+      page = open("http://manasbis.manas.edu.kg/menu/")
       doc = Nokogiri::HTML(page)
       myArr = Array.new
       newarr = Array.new
